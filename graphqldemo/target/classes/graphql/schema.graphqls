@@ -1,0 +1,53 @@
+
+type User {
+    id: Int!
+    username: String!
+    email: String!
+    fullname: String!
+    userEmp: UserEmp
+}
+
+type UserEmp {
+    id: Int!
+    role: String
+    department: String
+    organization: String
+}
+
+input CreateUserInput {
+	id: Int!
+    username: String!
+    email: String!
+    fullname: String!
+    userEmp: CreateUserEmpInput
+}
+
+input CreateUserEmpInput {
+    id: Int!
+    role: String
+    department: String
+    organization: String
+}
+
+input UpdateUserInput {
+    id: Int!
+    username: String
+    email: String
+    fullname: String
+    userEmp: UpdateUserEmpInput
+}
+
+input UpdateUserEmpInput {
+    role: String
+    department: String
+    organization: String
+}
+
+type Query {
+    user(id: Int!): User
+}
+
+type Mutation {
+    createUser(input: CreateUserInput!): User!
+    updateUser(input: UpdateUserInput!): User!
+}
